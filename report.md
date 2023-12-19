@@ -55,26 +55,27 @@ The model I created used 150 estimators and had a learning rate of .1. Adjusting
 
 # Discussion of Best Model
 So by far, the best model was the XG Boost model when predicting the house price based on the image. The XGboost had a Rsquared value of .921 and the Neural Network Rsquared was .314. The XGBoost had a great MAE value of 56945.714 compared to 231033.234375. The XGBoost model was much faster to compute compared to the NN. It took about 2.5 hours to run the NN with a batch size of 70 and 5 epochs. 
-This is how the MSE of the neural network model changed over time
+This is how the MSE of the neural network model changed over time.
+
 ![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/NN-MSE.png)
+
 The figure below is a similar graph but it is the mean absolute percentage error. 
+
 ![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/trainValFig.png)
 
-![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/AveragePrice%20for%20Bedrooms.png)
 
 The XG boost model on the other hand took only a few minutes and was much more accurate in its prediction. One reason why the XGBoost model performed well was because XGBoost often requires less feature engineering. It can handle a mix of numeric and categorical features without extensive preprocessing.
 
 
 Here is a look at the performances of each model. 
 The figure below is the performance of the Neural Net
+
 ![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/NNPerformance.png)
 
 The figure below is the performance of the XGBoost model
 ![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/XGPerformance.png)
-As you can see the XGBoost was much more accurate which lead to a better model. 
 
-
-When Just looking at the tabular data there were a lot more models to compare but in the end, there wasn't one that was much better than the rest. The two that performed the best out of all the models are linear regression and decision tree. The linear regression model reported a higher R-squared but a lower MSE. The difference in MSE between the two was about fifteen percent which seemed weird when comparing the MSE's. In the end, I wanted the predicted values to be closer to the actual value and that's why the Linear Regression model is the one I would use going forward. 
+As you can see the XGBoost was much more accurate which led to a better model. When Just looking at the tabular data there were a lot more models to compare but in the end, there wasn't one that was much better than the rest. The two that performed the best out of all the models are linear regression and decision tree. The linear regression model reported a higher R-squared but a lower MSE. The difference in MSE between the two was about fifteen percent which seemed weird when comparing the MSE's. In the end, I wanted the predicted values to be closer to the actual value and that's why the Linear Regression model is the one I would use going forward. 
 
 # Conclusion
 So to restate the XGBoost model performed much better compared to the Neural Network model. The XGBoost model is pre-trained and is well-equipped to handle image data without much tuning. The Neural Net was much slower and computation took about an hour and a half on average. This made trying different layers and activation formulas more difficult as it took a long time to see results. 
