@@ -1,7 +1,7 @@
 # Introduction
 The real estate market in Southern California is dynamic and intricate, influenced by a myriad of factors ranging from location and property features to economic trends. In this machine learning project, we delve into the realm of real estate data, employing a holistic approach by combining both tabular and image data to gain a comprehensive understanding of property values.
 
-I was interested in seeing how well a model can predict the house price based on the image and a few other factors. I also thought it would be interesting to see how models would do without image and instead just using variables like number of bed, bath, square footage, and citi. 
+I was interested in seeing how well a model can predict the house price based on the image and a few other factors. I also thought it would be interesting to see how models would do without images and instead just use variables like number of bed, bath, square footage, and citi. 
 
 The data was found [here](https://www.kaggle.com/datasets/ted8080/house-prices-and-images-socal/data)
 
@@ -24,9 +24,11 @@ This image helped me realize how big the data set is. 12 Bedrooms is an outlier 
 Below are the models I used for this image data. 
 
 ~Neural Network (NN): a computational model inspired by the structure and functioning of the human brain, consisting of interconnected nodes organized in layers that process and transform input data to produce output.
+
 ~XGBoost: an efficient open-source machine learning library that implements the gradient boosting framework, specifically designed for speed and performance, often used for classification and regression tasks.
 
 These are the models I used for the tabular data
+
 ~Linear Regression: a statistical method used for modeling the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data. I ran this model with a OneHotEncoder on the City variable otherwise I would have to drop the variable. Surprisingly this was one of the best performing models. The R-squared was 0.6904 and the Mean Absolute Error was 142438.6490. Now this might not seem that good but compared to the more complicated models that were used, this one did great!
 I experimented with taking out the City variable but the model performed significantly worse without it. The R-squared lowered to 0.348 and the Mean Squared Error (Linear Regression without city) was 96084035154.39. So after this initial test, I decided to keep the categorical variable of city in the models going forward.
 
@@ -52,12 +54,27 @@ The model I created used 150 estimators and had a learning rate of .1. Adjusting
 ~Support Vector Machines for Regression (SVR): used to model the relationship between input features and a target variable by finding a hyperplane that captures the linear relationship in a high-dimensional space, allowing for non-linear relationships using kernel functions. This was the last model I used and I thought it would perform fairly well as it isn't very complex but sadly it did not. The MAE for SVR model was 269327.27931542526.27. Overall this model wasn't suited well to handle this data and because of that, it had an MAE higher than most of the other models. 
 
 # Discussion of Best Model
-So by far, the best model was the XG Boost model when predicting the house price based on the image. The XGboost had a Rsquared value of .921 and the Neural Network Rsquared was .314. The XGBoost had a great MAE value of 56945.714 compared to 231033.234375. The XGBoost model was much faster to compute compared to the NN. It took about 2.5 hours to run the NN with a batch size of 70 and 5 epochs. The XG boost model on the other hand took only a few minutes and was much more accurate in its prediction. One reason why the XGBoost model performed well was because XGBoost often requires less feature engineering. It can handle a mix of numeric and categorical features without extensive preprocessing.
+So by far, the best model was the XG Boost model when predicting the house price based on the image. The XGboost had a Rsquared value of .921 and the Neural Network Rsquared was .314. The XGBoost had a great MAE value of 56945.714 compared to 231033.234375. The XGBoost model was much faster to compute compared to the NN. It took about 2.5 hours to run the NN with a batch size of 70 and 5 epochs. 
+This is how the MSE of the neural network model changed over time
+![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/NN-MSE.png)
+The figure below is a similar graph but it is the mean absolute percentage error. 
+![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/trainValFig.png)
+
+![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/AveragePrice%20for%20Bedrooms.png)
+
+The XG boost model on the other hand took only a few minutes and was much more accurate in its prediction. One reason why the XGBoost model performed well was because XGBoost often requires less feature engineering. It can handle a mix of numeric and categorical features without extensive preprocessing.
+
+
+Here is a look at the performances of each model. 
+The figure below is the performance of the Neural Net
+![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/NNPerformance.png)
+
+The figure below is the performance of the XGBoost model
+![Figure](https://github.com/stevengarcia2132/ML-Real-Estate-Image-Prediction-/blob/main/XGPerformance.png)
+As you can see the XGBoost was much more accurate which lead to a better model. 
 
 
 When Just looking at the tabular data there were a lot more models to compare but in the end, there wasn't one that was much better than the rest. The two that performed the best out of all the models are linear regression and decision tree. The linear regression model reported a higher R-squared but a lower MSE. The difference in MSE between the two was about fifteen percent which seemed weird when comparing the MSE's. In the end, I wanted the predicted values to be closer to the actual value and that's why the Linear Regression model is the one I would use going forward. 
-
-Linear
 
 # Conclusion
 So to restate the XGBoost model performed much better compared to the Neural Network model. The XGBoost model is pre-trained and is well-equipped to handle image data without much tuning. The Neural Net was much slower and computation took about an hour and a half on average. This made trying different layers and activation formulas more difficult as it took a long time to see results. 
