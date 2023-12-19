@@ -1,17 +1,17 @@
 # ML-Real-Estate-Image-Prediction-
 
 This repository was created for my 400 level machine learning class during my final semester at college.
-The repository contains the data, code and word document explaining the project proposal. 
+The repository contains the data, code, and word document explaining the project proposal. 
 
 
-#Data
-The data is from Kaggle.com. The data contains eight columns which are image id, bed, bath, price, street, city, city
-number and square feet. As you can expect bed, bath, city number, and square feet are all numerical columns with the rest being strings.
-One of the biggest challenges was finding a complete data set. I wanted a data set that contained images along with numerical columns so
-I can create separate models for the image and numerical data. The data set I chose is authored by a current Adjunct Assistant Professor
-of Data Science at the University of Maryland. The author states in a blog that the data comes from Weichert’s website for Southern California listings.
+# ReportMD
+The reportMD file contains my analysis and explanation of the models I used for this project along with images. At the top of the page, there is also a link to where the data was sourced on Kaggle. I did not include the folder of real estate images but they can be found at that link. 
 
-#Work
-The code for the model creation will be in a file called work.py. Here I will document my code and walk through the 
-data preprocessing and models. Along with the models I will be using important metrics to measure the usefulness of the model.
-These metrics include the ROC, AUC, and MSE among other that will be used. 
+# Socal2.csv
+This file contains the tabular data on the real estate data. It can also be found at the link at the top of the ReportMd file. 
+
+# Tabular.ipynb
+This file contains all the code I used to create the models that ran the tabular data. There are various models and charts a long with comments to help understand the code. The models in this file do not contain the code for the image data. 
+
+# ImageModel.ipynb
+This data contains the code for the pre-processing and model creation of XGBoost and Nural Net models. There are graphs and visualizations to help understand the performance of the model. 
